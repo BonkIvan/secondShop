@@ -21,6 +21,7 @@ public class AppContextListener implements ServletContextListener {
         //Установка соединения с базой данных
       Connection connection = new Connection();
       context.setAttribute("connectionDB", connection);
+        System.out.println("dsfsd");
     }
 
 
