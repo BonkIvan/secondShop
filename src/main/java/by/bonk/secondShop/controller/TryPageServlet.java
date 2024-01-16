@@ -14,8 +14,7 @@ public class TryPageServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       /* Connection connection = new Connection();
-        connection.connectionDB();*/
+
         req.getRequestDispatcher("/WEB-INF/jsp/dashboard-page.jsp").forward(req, resp);
     }
 }

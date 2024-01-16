@@ -7,19 +7,24 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<div class="col-md-6 col-lg-4 col-xl-3">
-    <div class="rounded position-relative fruite-item">
-        <div class="fruite-img">
-            <img src="img/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
-        </div>
-        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-            <h4>Grapes</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                <div class="d-flex justify-content-between flex-lg-wrap">
-                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+<div class="col">
+    <div class="card shadow-sm">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#55595c"></rect>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+        </svg>
+        <div class="card-body">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                additional content. This content is a little bit longer.</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
+                <small class="text-body-secondary">9 mins</small>
+            </div>
         </div>
     </div>
 </div>
