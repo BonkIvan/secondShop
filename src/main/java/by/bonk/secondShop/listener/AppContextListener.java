@@ -1,6 +1,7 @@
 package by.bonk.secondShop.listener;
 
-import by.bonk.secondShop.sql.Connection;
+
+import by.bonk.secondShop.sql.ConnectionDB;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
@@ -19,18 +20,22 @@ public class AppContextListener implements ServletContextListener {
             Провадера команд
         */
         //Установка соединения с базой данных
-      Connection connection = new Connection();
-      context.setAttribute("connectionDB", connection);
-        System.out.println("dsfsd");
+     ConnectionDB connection = new ConnectionDB();
+      context.setAttribute("connectionDB", connection.getConnection());
+
     }
 
 
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        Connection connection = (Connection) sce.getServletContext().getAttribute("connectionDB");
-        if (connection != null && !connection.isClosed()) {
-            connection.close();
+        ConnectionDB connection = (ConnectionDB) sce.getServletContext().getAttribute("connectionDB");
+        try {
+            if (connection != null && !connection.isClosed()) {
+               connection.close();
+              }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         ServletContextListener.super.contextDestroyed(sce);
     }
