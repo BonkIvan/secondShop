@@ -16,16 +16,16 @@ public class RetrieveDataPreparedStatment {
     }
 
     public ProductList getProduct (){
-        ProductList productList = null;
+        ProductList productList = new ProductList();
         try (Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery("SELECT * FROM products");
             while (rs.next()) {
                 productList.getProducts().add(new Product(rs.getInt("id"),
-                                                          rs.getString("name_product"),
+                                                          rs.getString("name"),
                                                           rs.getString("description"),
                                                           rs.getFloat("price")));
                 String strTable = rs.getInt("id") + " - "
-                        + rs.getString("name_product") + " "
+                        + rs.getString("name") + " "
                         + rs.getString("description") + " - "
                         + rs.getFloat("price");
                 System.out.println(strTable);

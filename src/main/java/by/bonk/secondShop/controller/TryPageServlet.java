@@ -25,7 +25,7 @@ public class TryPageServlet extends HttpServlet {
 
         RetrieveDataPreparedStatment collection = new RetrieveDataPreparedStatment(connection);
           ArrayList<Product> products = collection.getProduct().getProducts();
-          servletContext.setAttribute("products", products);
-        req.getRequestDispatcher("/WEB-INF/jsp/dashboard-page.jsp").forward(req, resp);
+        req.setAttribute("productsList", products);
+        req.getRequestDispatcher("/WEB-INF/jsp/new.jsp").forward(req, resp);
     }
 }

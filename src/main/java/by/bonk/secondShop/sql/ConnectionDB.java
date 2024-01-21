@@ -8,20 +8,26 @@ import java.sql.SQLException;
 public  class ConnectionDB {
 
     private Connection connection;
-    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/shop";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/shop";
     static final String USER = "root";
     static final String PASSWORD = "root";
 
 
-    public Connection getConnection() {
+    public ConnectionDB (){
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+            System.out.println(connection.isValid(5));
             this.connection = connection;
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
-        return connection;
+    }
 
+    public Connection getConnection() {
+        return connection;
     }
 
     public void close() {

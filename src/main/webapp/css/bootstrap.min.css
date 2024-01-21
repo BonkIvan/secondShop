@@ -13460,7 +13460,7 @@ textarea.form-control-lg {
     .d-print-none {
         display: none !important
     }
-    #py-5 text-center container{
+    .py-5 text-center container{
         margin-top: 200px
     }
 }
