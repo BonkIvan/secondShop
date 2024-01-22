@@ -1,6 +1,7 @@
 package by.bonk.secondShop.controller;
 
-import jakarta.servlet.ServletConfig;
+import by.bonk.secondShop.constant.KeyValues;
+import by.bonk.secondShop.sql.CheckUsers;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.sql.Connection;
 
 @WebServlet(urlPatterns = "/login")
-public class LoginPage extends HttpServlet {
+public class LoginController extends HttpServlet {
  /*   @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext servletContext = getServletContext();
@@ -29,6 +30,21 @@ public class LoginPage extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        resp.setContentType("text/html; charset=UTF-8");
+        ServletContext servletContext = getServletContext();
+
+        final String username = req.getParameter(KeyValues.USER_NAME.getParamName());
+        final String password = req.getParameter(KeyValues.USER_PASSWORD.getParamName());
+
+        Connection connection = (Connection) servletContext.getAttribute("connectionDB");
+
+
+        CheckUsers checkUsers = new CheckUsers(connection);
+
+        if (checkUsers.checkUser(username, password)){
+            req.getRequestDispatcher("/WEB-INF/jsp/user-page.jsp").forward(req, resp);
+            System.out.println(" *****something*****");
+        }req.getRequestDispatcher("/WEB-INF/jsp/sign-up-in-page.jsp").forward(req, resp);
+
     }
 }

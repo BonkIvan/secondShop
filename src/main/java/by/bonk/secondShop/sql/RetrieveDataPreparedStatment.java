@@ -21,11 +21,11 @@ public class RetrieveDataPreparedStatment {
             ResultSet rs = stmt.executeQuery("SELECT * FROM products");
             while (rs.next()) {
                 productList.getProducts().add(new Product(rs.getInt("id"),
-                                                          rs.getString("name"),
+                                                          rs.getString("name_product"),
                                                           rs.getString("description"),
                                                           rs.getFloat("price")));
                 String strTable = rs.getInt("id") + " - "
-                        + rs.getString("name") + " "
+                        + rs.getString("name_product") + " "
                         + rs.getString("description") + " - "
                         + rs.getFloat("price");
                 System.out.println(strTable);
