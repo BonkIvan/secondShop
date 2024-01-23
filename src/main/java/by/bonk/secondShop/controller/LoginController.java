@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -40,9 +41,10 @@ public class LoginController extends HttpServlet {
 
 
         CheckUsers checkUsers = new CheckUsers(connection);
-
+        HttpSession session = req.getSession(false);
+        req.setAttribute("session", session);
         if (checkUsers.checkUser(username, password)){
-            req.getRequestDispatcher("/WEB-INF/jsp/user-page.jsp").forward(req, resp);
+          req.getRequestDispatcher("/dashboard").forward(req, resp);
             System.out.println(" *****something*****");
         }req.getRequestDispatcher("/WEB-INF/jsp/sign-up-in-page.jsp").forward(req, resp);
 
